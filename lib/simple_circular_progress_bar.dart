@@ -415,8 +415,11 @@ class _SimpleCircularProgressBarPainter extends CustomPainter {
   }
 
   void _drawFullProgress(Canvas canvas, Size size) {
+    final Rect arcRect = Offset.zero & size;
+    
     final Paint paint = Paint()
-      ..color = fullProgressColor
+      // ..color = fullProgressColor
+      ..shader = frontGradient.createShader(arcRect)
       ..style = PaintingStyle.stroke
       ..strokeWidth = progressStrokeWidth;
 
